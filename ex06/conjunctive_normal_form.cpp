@@ -10,7 +10,7 @@ typedef struct		s_bst
 	struct s_bst	*right;
 }					t_bst;
 
-std::string		negation_normal_form(std::string &formula)
+std::string		conjunctive_normal_form(std::string &formula)
 {
 	t_bst			*tree = NULL;
 	t_bst			*tmp = NULL;
@@ -253,5 +253,5 @@ std::string		negation_normal_form(std::string &formula)
 int main()
 {
 	std::string kek("AB!&D>C^!BG=Z&|!");
-	std::cout << negation_normal_form(kek) << std::endl;
+	std::cout << conjunctive_normal_form(kek) << std::endl;
 }
