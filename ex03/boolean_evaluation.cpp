@@ -5,8 +5,8 @@
 bool		eval_formula(std::string formula)
 {
 	std::stack<bool>	s;
-	bool				t1;
-	bool				t2;
+	bool				t1, t2;
+
 	for (uint32_t i = 0; i < formula.size(); i++)
 	{
 		if (formula[i] == 49)

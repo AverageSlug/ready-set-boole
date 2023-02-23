@@ -14,7 +14,6 @@ void	print_truth_table(std::string formula)
 			j++;
 			values[formula[i] - 65] = 0;
 		}
-
 	for (int i = 0; i < 26; i++)
 		if (values[i] >= 0)
 			std::cout << "| " << static_cast<char>(i + 65) << " ";
