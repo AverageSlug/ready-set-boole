@@ -249,9 +249,3 @@ std::string		negation_normal_form(std::string &formula)
 	}
 	return (return_formula);
 }
-
-int main()
-{
-	std::string kek("AB!&D>C^!BG=Z&|!");
-	std::cout << negation_normal_form(kek) << std::endl;
-}
