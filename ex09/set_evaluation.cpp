@@ -46,9 +46,9 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			{
 				std::vector<int32_t>::iterator	it = t1.begin();
 				for (; it != t1.end(); it++)
-					if (t1[*it] == t3[j])
+					if (*it == t3[j])
 					{
-						t1.erase(it);
+						t1.erase(it--);
 						break ;
 					}
 				if (it == t1.end())
@@ -67,18 +67,14 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			s.pop();
 			t2 = s.top();
 			s.pop();
-			std::cout << *t1.end() << std::endl;
 			for (std::vector<int32_t>::iterator it = t1.begin(); it != t1.end(); it++)
 			{
-				std::cout << "A" << std::endl;
 				size_t	j = 0;
 				for (; j < t2.size(); j++)
-					if (t1[*it] == t2[j])
+					if (*it == t2[j])
 						break ;
-				std::cout << "B" << std::endl;
 				if (j == t2.size())
 					t1.erase(it--);
-				std::cout << "C" << std::endl;
 			}
 			s.push(t1);
 		}
@@ -93,22 +89,25 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			s.pop();
 			t2 = s.top();
 			s.pop();
-			for (std::vector<int32_t>::iterator it = t1.begin(); it != t1.end(); it++)
+			for (int j = 0; j < t2.size(); j++)
 			{
-				size_t	j = 0;
-				for (; j < t2.size(); j++)
-					if (t1[*it] == t2[j])
+				std::vector<int32_t>::iterator it = t1.begin();
+				for (; it != t1.end(); it++)
+					if (*it == t2[j])
+					{
+						t1.erase(it--);
 						break ;
-				if (j == t2.size())
-					t1.erase(it);
+					}
+				if (it == t1.end())
+					t1.push_back(t2[j]);
 			}
 			for (int32_t j = 0; j < t3.size(); j++)
 			{
 				std::vector<int32_t>::iterator	it = t1.begin();
 				for (; it != t1.end(); it++)
-					if (t1[*it] == t3[j])
+					if (*it == t3[j])
 					{
-						t1.erase(it);
+						t1.erase(it--);
 						break ;
 					}
 				if (it == t1.end())
@@ -123,30 +122,29 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 				std::cout << "Invalid formula" << std::endl;
 				return (std::vector<int32_t>());
 			}
-			t1 = s.top();
-			s.pop();
 			t2 = s.top();
+			s.pop();
+			t1 = s.top();
 			s.pop();
 			for (int32_t j = 0; j < t3.size(); j++)
 			{
 				std::vector<int32_t>::iterator	it = t1.begin();
 				for (; it != t1.end(); it++)
-					if (t1[*it] == t3[j])
+					if (*it == t3[j])
 					{
-						t1.erase(it);
+						t1.erase(it--);
 						break ;
 					}
 				if (it == t1.end())
 					t1.push_back(t3[j]);
 			}
-			t2 = s.top();
-			s.pop();
 			for (int j = 0; j < t2.size(); j++)
 			{
-				for (int k = 0; k < t1.size(); k++)
+				int k = 0;
+				for (; k < t1.size(); k++)
 					if (t1[k] == t2[j])
 						break ;
-				if (j == t2.size())
+				if (k == t1.size())
 					t1.push_back(t2[j]);
 			}
 			s.push(t1);
@@ -164,13 +162,14 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			s.pop();
 			for (int j = 0; j < t2.size(); j++)
 			{
-				for (std::vector<int32_t>::iterator it = t1.begin(); it != t1.end(); it++)
-					if (t1[*it] == t2[j])
+				std::vector<int32_t>::iterator it = t1.begin();
+				for (; it != t1.end(); it++)
+					if (*it == t2[j])
 					{
-						t1.erase(it);
+						t1.erase(it--);
 						break ;
 					}
-				if (j == t2.size())
+				if (it == t1.end())
 					t1.push_back(t2[j]);
 			}
 			s.push(t1);
@@ -188,10 +187,11 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			s.pop();
 			for (int j = 0; j < t2.size(); j++)
 			{
-				for (int k = 0; k < t1.size(); k++)
+				int k = 0;
+				for (; k < t1.size(); k++)
 					if (t1[k] == t2[j])
 						break ;
-				if (j == t2.size())
+				if (k == t1.size())
 					t1.push_back(t2[j]);
 			}
 			s.push(t1);
@@ -205,28 +205,4 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 		t2.clear();
 	}
 	return (s.top());
-}
-
-int main()
-{
-	std::vector<std::vector<int32_t> >	wow;
-	std::vector<int32_t>	uguu, jsp, troll;
-	uguu.push_back(1);
-	uguu.push_back(2);
-	uguu.push_back(3);
-	uguu.push_back(4);
-	jsp.push_back(1);
-	jsp.push_back(2);
-	jsp.push_back(3);
-	jsp.push_back(4);
-	troll.push_back(1);
-	troll.push_back(2);
-	troll.push_back(3);
-	troll.push_back(4);
-	wow.push_back(uguu);
-	wow.push_back(jsp);
-	wow.push_back(troll);
-	std::vector<int32_t>	lmao = eval_set("ABC&&", wow);
-	for (int i = 0; i < lmao.size(); i++)
-		std::cout << lmao[i] << std::endl;
 }
