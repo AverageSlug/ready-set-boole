@@ -185,7 +185,94 @@ std::string		conjunctive_normal_form(std::string &formula)
 			tree->parent = node;
 			node->left = tree;
 			node->right = copy;
-			tree = node;
+			while (tree->parent)
+				tree = tree->parent;
+			continue ;
+		}
+		if (tree->parent && tree->value == '&' && tree->parent->value == '|')
+		{
+			t_bst	*node = new t_bst;
+			t_bst	*distcopy = new t_bst;
+			node->negation = false;
+			node->value = '|';
+			tree->value = '|';
+			tree->parent->value = '&';
+			node->parent = tree->parent;
+			if (tree == tree->parent->left)
+			{
+				distcopy = tree->parent->right;
+				tree->parent->right = node;
+			}
+			else
+			{
+				distcopy = tree->parent->left;
+				tree->parent->right = node;
+			}
+			distcopy->parent = node;
+			tree->right->parent = node;
+			node->left = tree->right;
+			node->right = distcopy;
+			t_bst	*copy = new t_bst;
+			copy->parent = tree;
+			copy->left = NULL;
+			copy->right = NULL;
+			copy->value = distcopy->value;
+			copy->negation = distcopy->negation;
+			tree->right = copy;
+			while (69)
+			{
+				if (distcopy->value >= 65 && distcopy->value <= 90)
+					break ;
+				if (distcopy->left)
+				{
+					distcopy = distcopy->left;
+					tmp = copy;
+					copy = copy->left;
+					side = 1;
+				}
+				else if (distcopy->right)
+				{
+					std::cout << "Invalid formula" << std::endl;
+					return ("");
+				}
+				else if (distcopy->parent)
+				{
+					if (distcopy->parent && distcopy == distcopy->parent->right && distcopy->parent != node)
+					{
+						while (distcopy->parent && distcopy == distcopy->parent->right && distcopy->parent != node)
+						{
+							distcopy = distcopy->parent;
+							copy = copy->parent;
+						}
+						if (distcopy->parent == node)
+							break ;
+					}
+					distcopy = distcopy->parent->right;
+					tmp = copy->parent;
+					copy = copy->parent->right;
+					side = 0;
+				}
+				else
+				{
+					std::cout << "Invalid formula" << std::endl;
+					return ("");
+				}
+				copy = new t_bst;
+				copy->parent = tmp;
+				if (side)
+					tmp->left = copy;
+				else
+					tmp->right = copy;
+				copy->left = NULL;
+				copy->right = NULL;
+				copy->value = distcopy->value;
+				if (copy->parent && node == copy->parent->parent)
+					copy->negation = !tree->negation;
+				else
+					copy->negation = tree->negation;
+			}
+			while (tree->parent)
+				tree = tree->parent;
 			continue ;
 		}
 		if (tree->left)
@@ -211,6 +298,20 @@ std::string		conjunctive_normal_form(std::string &formula)
 	}
 	while (tree->parent)
 		tree = tree->parent;
+	while (tree->left && tree->left->value == '&')
+	{
+		t_bst	*swap1 = tree->left;
+		t_bst	*swap2 = tree->right;
+		t_bst	*swap3 = tree->left->right;
+		tree->left = swap1->left;
+		swap1->left->parent = tree;
+		tree->right = swap1;
+		swap1->parent = tree;
+		swap1->left = swap3;
+		swap3->parent = swap1;
+		swap1->right = swap2;
+		swap2->parent = swap1;
+	}
 	while (19)
 	{
 		if (tree->left)
@@ -248,10 +349,4 @@ std::string		conjunctive_normal_form(std::string &formula)
 		}
 	}
 	return (return_formula);
-}
-
-int main()
-{
-	std::string kek("AB!&D>C^!BG=Z&|!");
-	std::cout << conjunctive_normal_form(kek) << std::endl;
 }
