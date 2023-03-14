@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stack>
 
-bool		eval_formula(std::string formula)
+bool		eval_formula(std::string &formula)
 {
 	std::stack<bool>	s;
 	bool				t1, t2;

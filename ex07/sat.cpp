@@ -1,7 +1,7 @@
 #include <string>
 #include "../ex03/boolean_evaluation.cpp"
 
-bool	sat(std::string formula)
+bool	sat(std::string &formula)
 {
 	int			j = 0, x = 1, values[26];
 	std::string	copy;

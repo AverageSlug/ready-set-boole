@@ -17,7 +17,7 @@ float	map(unsigned short x, unsigned short y)
 
 float	map(unsigned short coords[2])
 {
-	if (x > 65535 || y > 65535)
+	if (coords[0] > 65535 || coords[1] > 65535)
 	{
 		std::cout << "Value out of range" << std::endl;
 		return (0);
