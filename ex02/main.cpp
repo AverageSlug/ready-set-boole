@@ -1,5 +1,4 @@
-#include "gray_code.cpp"
-#include <iostream>
+#include "gray_code.hpp"
 
 int		main(int argc, char **argv)
 {

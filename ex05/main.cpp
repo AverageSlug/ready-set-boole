@@ -1,4 +1,4 @@
-#include "negation_normal_form.cpp"
+#include "negation_normal_form.hpp"
 
 int		main(int argc, char **argv)
 {

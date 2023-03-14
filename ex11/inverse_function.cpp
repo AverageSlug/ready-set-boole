@@ -1,4 +1,4 @@
-#include <iostream>
+#include "inverse_function.hpp"
 
 unsigned short	*reverse_map(float n)
 {
@@ -6,7 +6,8 @@ unsigned short	*reverse_map(float n)
 	{
 		std::cout << "Value out of range" << std::endl;
 		unsigned short	i[2] = {0, 0};
-		return (i);
+		unsigned short	*j = i;
+		return (j);
 	}
 	unsigned short	x = 0;
 	unsigned short	y = 0;
@@ -21,5 +22,6 @@ unsigned short	*reverse_map(float n)
 		n -= (static_cast<float>(1) / 4294967296);
 	}
 	unsigned short	i[2] = {x, y};
-	return (i);
+	unsigned short	*j = i;
+	return (j);
 }

@@ -1,5 +1,4 @@
-#include <cstdint>
-#include "../ex00/adder.cpp"
+#include "multiplier.hpp"
 
 uint32_t	multiplier(uint32_t a, uint32_t b)
 {

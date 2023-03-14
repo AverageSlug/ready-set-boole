@@ -1,4 +1,4 @@
-#include "conjunctive_normal_form.cpp"
+#include "conjunctive_normal_form.hpp"
 
 int		main(int argc, char **argv)
 {

@@ -1,5 +1,4 @@
-#include "multiplier.cpp"
-#include <iostream>
+#include "multiplier.hpp"
 
 int		main(int argc, char **argv)
 {

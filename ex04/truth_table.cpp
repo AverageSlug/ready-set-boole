@@ -1,5 +1,4 @@
-#include <string>
-#include "../ex03/boolean_evaluation.cpp"
+#include "truth_table.hpp"
 
 void	print_truth_table(std::string &formula)
 {

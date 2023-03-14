@@ -1,13 +1,10 @@
-#include <cstdint>
-#include <iostream>
-#include <stack>
-#include <vector>
+#include "set_evaluation.hpp"
 
-std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int32_t> > sets)
+std::vector<int32_t>	eval_set(std::string formula, std::vector<std::vector<int32_t> > sets)
 {
 	std::stack<std::vector<int32_t> >	s;
 	std::vector<int32_t>				t1, t2, t3;
-	int									n = 0, values[26];
+	size_t								n = 0, values[26];
 
 	for (size_t i = 0; i < sets.size(); i++)
 		for (size_t j = 0; j < sets[i].size(); j++)
@@ -19,7 +16,7 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			if (k == t3.size())
 				t3.push_back(sets[i][j]);
 		}
-	for (int i = 0; i < 26; i++)
+	for (size_t i = 0; i < 26; i++)
 		values[i] = -1;
 	for (int i = 0; formula[i]; i++)
 		if (formula[i] >= 65 && formula[i] <= 90 && values[formula[i] - 65] < 0)
@@ -42,7 +39,7 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			}
 			t1 = s.top();
 			s.pop();
-			for (int32_t j = 0; j < t3.size(); j++)
+			for (size_t j = 0; j < t3.size(); j++)
 			{
 				std::vector<int32_t>::iterator	it = t1.begin();
 				for (; it != t1.end(); it++)
@@ -89,7 +86,7 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			s.pop();
 			t2 = s.top();
 			s.pop();
-			for (int j = 0; j < t2.size(); j++)
+			for (size_t j = 0; j < t2.size(); j++)
 			{
 				std::vector<int32_t>::iterator it = t1.begin();
 				for (; it != t1.end(); it++)
@@ -101,7 +98,7 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 				if (it == t1.end())
 					t1.push_back(t2[j]);
 			}
-			for (int32_t j = 0; j < t3.size(); j++)
+			for (size_t j = 0; j < t3.size(); j++)
 			{
 				std::vector<int32_t>::iterator	it = t1.begin();
 				for (; it != t1.end(); it++)
@@ -126,7 +123,7 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			s.pop();
 			t1 = s.top();
 			s.pop();
-			for (int32_t j = 0; j < t3.size(); j++)
+			for (size_t j = 0; j < t3.size(); j++)
 			{
 				std::vector<int32_t>::iterator	it = t1.begin();
 				for (; it != t1.end(); it++)
@@ -138,9 +135,9 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 				if (it == t1.end())
 					t1.push_back(t3[j]);
 			}
-			for (int j = 0; j < t2.size(); j++)
+			for (size_t j = 0; j < t2.size(); j++)
 			{
-				int k = 0;
+				size_t	k = 0;
 				for (; k < t1.size(); k++)
 					if (t1[k] == t2[j])
 						break ;
@@ -160,7 +157,7 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			s.pop();
 			t2 = s.top();
 			s.pop();
-			for (int j = 0; j < t2.size(); j++)
+			for (size_t j = 0; j < t2.size(); j++)
 			{
 				std::vector<int32_t>::iterator it = t1.begin();
 				for (; it != t1.end(); it++)
@@ -185,9 +182,9 @@ std::vector<int32_t>		eval_set(std::string formula, std::vector<std::vector<int3
 			s.pop();
 			t2 = s.top();
 			s.pop();
-			for (int j = 0; j < t2.size(); j++)
+			for (size_t j = 0; j < t2.size(); j++)
 			{
-				int k = 0;
+				size_t	k = 0;
 				for (; k < t1.size(); k++)
 					if (t1[k] == t2[j])
 						break ;

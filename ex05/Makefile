@@ -2,15 +2,17 @@ NAME		=	negation_normal_form
 
 CXX			=	clang++
 
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 SRCS		=	$(wildcard *.cpp)
+
+INCS		=	$(wildcard *.hpp)
 
 OBJS		=	$(SRCS:.cpp=.o)
 
 all		:	$(NAME)
 
-$(NAME)	:	$(OBJS)
+$(NAME)	:	$(OBJS) $(INCS)
 			$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean	:

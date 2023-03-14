@@ -1,4 +1,4 @@
-#include "truth_table.cpp"
+#include "truth_table.hpp"
 
 int		main(int argc, char **argv)
 {

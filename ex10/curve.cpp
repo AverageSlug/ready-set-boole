@@ -1,4 +1,4 @@
-#include <iostream>
+#include "curve.hpp"
 
 float	map(unsigned short x, unsigned short y)
 {

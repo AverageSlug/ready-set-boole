@@ -1,5 +1,4 @@
-#include <string>
-#include "../ex03/boolean_evaluation.cpp"
+#include "sat.hpp"
 
 bool	sat(std::string &formula)
 {

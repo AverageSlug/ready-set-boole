@@ -1,4 +1,4 @@
-#include "curve.cpp"
+#include "curve.hpp"
 
 int		main(int argc, char **argv)
 {

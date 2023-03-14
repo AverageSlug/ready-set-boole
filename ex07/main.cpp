@@ -1,4 +1,4 @@
-#include "sat.cpp"
+#include "sat.hpp"
 
 int		main(int argc, char **argv)
 {

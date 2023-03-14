@@ -1,7 +1,9 @@
-#include "set_evaluation.cpp"
+#include "set_evaluation.hpp"
 
 int		main(int argc, char **argv)
 {
+	(void)argc;
+	(void)argv;
 	// if (argc == 1)
 	// {
 	// 	std::cout << eval_set() << std::endl;

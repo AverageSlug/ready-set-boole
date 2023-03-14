@@ -1,4 +1,4 @@
-#include "inverse_function.cpp"
+#include "inverse_function.hpp"
 
 int		main(int argc, char **argv)
 {

@@ -1,4 +1,4 @@
-#include "boolean_evaluation.cpp"
+#include "boolean_evaluation.hpp"
 
 int		main(int argc, char **argv)
 {
